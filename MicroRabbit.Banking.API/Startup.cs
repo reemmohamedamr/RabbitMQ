@@ -30,6 +30,7 @@ namespace MicroRabbit.Banking.API
                     options => options.UseSqlServer(Configuration.GetConnectionString("BankingDbConnection")));
             //services.Configure<ConnectionStringOptions>(Configuration.GetSection("ConnectionStrings"));
 
+            services.AddMediatR(typeof(Startup));
 
             services.AddMvc();
             services.AddSwaggerGen(c =>
@@ -40,7 +41,6 @@ namespace MicroRabbit.Banking.API
                     Version = "v1"
                 });
             });
-            services.AddMediatR(typeof(Startup));
             RegisterServices(services);
         }
         private void RegisterServices(IServiceCollection services)
